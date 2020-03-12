@@ -10,7 +10,7 @@
           {{ item.type }}
         </li>
         <li class="text normal" v-show="showInput">
-          <input type="text" v-model="inputValue" @focus="judge()" />
+          <input type="text" v-model="inputValue" />
         </li>
       </ul>
     </div>
@@ -99,23 +99,34 @@ export default {
       listFlag: false,
       arithmeticType: ["+", "-", "*", "/"],
       showInput: false,
-      inputValue: ".",
+      inputValue: "",
       showData: [],
       selectItem: []
     };
   },
   methods: {
     showList() {
-      if (this.selectItem.attrs) {
-        this.inputValue = ".";
-        this.showInput = true;
+      if (this.inputValue === "." && this.selectItem.attrs) {
         this.showData = this.selectItem.attrs;
         this.listFlag = true;
-      } else {
-        this.inputValue = "";
-        this.showInput = false;
+        return;
       }
-      this.listFlag = true;
+
+      if (this.inputValue === "+") {
+        this.showData = [...this.DATAMAP];
+        this.listFlag = true;
+        return;
+      }
+      // if (this.selectItem.attrs) {
+      //   this.inputValue = ".";
+      //   this.showInput = true;
+      //   this.showData = this.selectItem.attrs;
+      //   this.listFlag = true;
+      // } else {
+      //   this.inputValue = "";
+      //   this.showInput = false;
+      // }
+      // this.listFlag = true;
     },
     addItem(item) {
       this.selectItemArr.push(item);
@@ -131,23 +142,21 @@ export default {
         this.inputValue = "";
       }
     },
-    judge() {
-      if (this.arithmeticType.includes(this.inputValue)) {
-        this.addItem();
-      }
-    }
+    // judge() {
+    //   if (this.arithmeticType.includes(this.inputValue)) {
+    //     this.addItem();
+    //   }
+    // }
   },
   created() {
     this.showData = [...this.DATAMAP];
   },
   mounted() {
-    window.addEventListener(
-      "click",
-     () => {
-      if (event.target !== this.$refs.expression) {
-        this.showList = false;
-      }
-    })
+    // window.addEventListener("click", () => {
+    //   if (event.target !== this.$refs.expression) {
+    //     this.showList = false;
+    //   }
+    // })
   },
   watch: {
     inputValue(value) {
@@ -156,6 +165,10 @@ export default {
       } 
       if (this.arithmeticType.includes(value)) {
         this.showInput = true;
+        this.showData = this.selectItem.attrs;
+        this.listFlag = true;
+      }
+      if (value === '.' && this.selectItem.attrs) {
         this.showData = this.selectItem.attrs;
         this.listFlag = true;
       }
@@ -172,7 +185,7 @@ export default {
 }
 .arithmetic {
   width: 960px;
-  height: 36px;
+  height: 90vh;
   margin: 0 auto;
   div {
     display: inline-block;
@@ -181,7 +194,7 @@ export default {
     position: relative;
     display: inline-block;
     width: 100%;
-    height: 100%;
+    height: 36px;
     max-height: 173px;
     overflow-y: scroll;
     margin: 0;
