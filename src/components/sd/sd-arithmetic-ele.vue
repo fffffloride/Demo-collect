@@ -8,7 +8,7 @@
           placeholder
           style="width: 60px"
           :disabled="!selectModelArr[j]"
-          @change="index++"
+          @change="addItem(j)"
         >
           <el-option
             v-for="item in SIGNMAP"
@@ -21,8 +21,8 @@
     </div>
 
     <el-button-group class="button-group">
-      <el-button type="primary" icon="el-icon-d-arrow-left" @click="index--" :disabled="index == 1"></el-button>
-      <el-button type="primary" icon="el-icon-delete" @click="index = 1" :disabled="index == 1"></el-button>
+      <el-button type="primary" icon="el-icon-d-arrow-left" @click="back" :disabled="index == 1"></el-button>
+      <el-button type="primary" icon="el-icon-delete" @click="clear" :disabled="index == 1"></el-button>
       <el-button
         type="primary"
         icon="el-icon-circle-check-outline"
@@ -132,6 +132,25 @@ export default {
         return "";
       }
       return i;
+    },
+    addItem(j) {
+      if (j === this.index - 1) {
+        this.index++;
+      }
+    },
+    back() {
+      if (this.selectModelArr[this.index - 1]) {
+        this.selectModelArr[this.index - 1] = "";
+      }
+      if (this.valueArr[this.index - 2]) {
+        this.valueArr[this.index - 2] = "";
+      }
+      this.index--;
+    },
+    clear() {
+      this.index = 1;
+      this.selectModelArr = [];
+      this.valueArr = [];
     }
   },
   computed: {
