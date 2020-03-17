@@ -22,6 +22,12 @@ const routes = [
     component: () =>
       import("../components/sd/sd-arithmetic-ele.vue")
   },
+  {
+    path: "/sd-chart",
+    name: "sd-chart",
+    component: () =>
+      import("../components/sd/sd-chart.vue")
+  },
 ];
 
 const router = new VueRouter({

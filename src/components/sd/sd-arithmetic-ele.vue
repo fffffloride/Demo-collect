@@ -126,6 +126,7 @@ export default {
         i++;
       }
       console.log(str);
+      alert(str);
     },
     valueOf(i) {
       if (!i || typeof i === "undefined") {
@@ -171,7 +172,7 @@ export default {
 .arithmetic {
   width: 960px;
   height: 90vh;
-  margin: 0 auto;
+  margin: 60px auto;
   div {
     display: block;
     float: left;
