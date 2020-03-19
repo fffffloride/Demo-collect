@@ -22,13 +22,16 @@
           </div>
           <div class="chart-box" id="event"></div>
         </li>
-        <li></li>
+        <li>
+          <funnel></funnel>
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+import funnel from "./sd-chart-funnel"
 export default {
   data() {
     return {
@@ -45,17 +48,6 @@ export default {
         { date: "3-13 9:00", number: 25, time: "current" },
         { date: "3-13 10:00", number: 63, time: "current" },
         { date: "3-13 11:00", number: 45, time: "current" }
-        // { date: "3-13 1:00", number: 30, time: "prevent" },
-        // { date: "3-13 2:00", number: 45, time: "prevent" },
-        // { date: "3-13 3:00", number: 70, time: "prevent" },
-        // { date: "3-13 4:00", number: 96, time: "prevent" },
-        // { date: "3-13 5:00", number: 95, time: "prevent" },
-        // { date: "3-13 6:00", number: 52, time: "prevent" },
-        // { date: "3-13 7:00", number: 38, time: "prevent" },
-        // { date: "3-13 8:00", number: 70, time: "prevent" },
-        // { date: "3-13 9:00", number: 25, time: "prevent" },
-        // { date: "3-13 10:00", number: 73, time: "prevent" },
-        // { date: "3-13 11:00", number: 85, time: "prevent" }
       ],
       data2: [
         { date: "3-13 1:00", number: 40 },
@@ -113,6 +105,7 @@ export default {
   },
   methods: {
     typeChange(value) {
+      this.chart1.clear();
       switch (value) {
         case 0:
           this.chart1.data(this.data1);
@@ -139,7 +132,7 @@ export default {
             ]);
           break;
       }
-      this.chart1.render(true);
+      this.chart1.render();
     },
     compare() {
       this.data1 = [
@@ -187,6 +180,9 @@ export default {
     render() {
       this.typeChange(this.value);
     }
+  },
+  components: {
+    funnel
   }
 };
 </script>
@@ -194,16 +190,14 @@ export default {
 <style lang="less" scoped>
 .chart {
   width: 100%;
-  height: 100%;
   background-color: #dedede;
   .container {
     height: 100%;
     width: 1600px;
     margin: 0 auto;
     ul {
-      padding-top: 20px;
+      padding: 20px;
       li {
-        // height: 420px;
         margin-bottom: 20px;
         background-color: #fff;
         border-radius: 6px;
@@ -213,6 +207,7 @@ export default {
         .report-chart {
           height: 70px;
           padding: 20px 12px 14px;
+          border-bottom: 1px solid #eee;
           .time-picker {
             width: 210px;
             display: inline-block;
