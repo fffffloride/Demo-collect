@@ -28,6 +28,12 @@ const routes = [
     component: () =>
       import("../components/sd/sd-chart.vue")
   },
+  {
+    path: "/echarts-map",
+    name: "echarts-map",
+    component: () =>
+      import("../components/echarts/echarts-map.vue")
+  },
 ];
 
 const router = new VueRouter({

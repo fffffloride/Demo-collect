@@ -21,6 +21,10 @@ export default {
         {
           name: "神策分析——图表",
           url: "/sd-chart"
+        },
+        {
+          name: "3D地图",
+          url: "/echarts-map"
         }
       ],
       colorMap: ["#409EFF", "#67C23A", "#E6A23C", "#F56C6C", "#909399"],
