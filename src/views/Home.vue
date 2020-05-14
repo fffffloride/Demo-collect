@@ -25,6 +25,10 @@ export default {
         {
           name: "3D地图",
           url: "/echarts-map"
+        },
+        {
+          name: "用户群组",
+          url: "/query-builder"
         }
       ],
       colorMap: ["#409EFF", "#67C23A", "#E6A23C", "#F56C6C", "#909399"],

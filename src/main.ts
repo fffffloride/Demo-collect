@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import echarts from 'echarts'
 import 'echarts-gl'
 
+
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$http = axios;

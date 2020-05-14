@@ -34,6 +34,12 @@ const routes = [
     component: () =>
       import("../components/echarts/echarts-map.vue")
   },
+  {
+    path: "/query-builder",
+    name: "query-builder",
+    component: () =>
+      import("../components/queryBuilder/index.vue")
+  },
 ];
 
 const router = new VueRouter({
