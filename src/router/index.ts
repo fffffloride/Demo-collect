@@ -40,6 +40,12 @@ const routes = [
     component: () =>
       import("../components/queryBuilder/index.vue")
   },
+  {
+    path: "/selector",
+    name: "selector",
+    component: () =>
+        import("../components/selector/demo.vue")
+  },
 ];
 
 const router = new VueRouter({

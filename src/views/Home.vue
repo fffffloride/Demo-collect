@@ -29,6 +29,10 @@ export default {
         {
           name: "用户群组",
           url: "/query-builder"
+        },
+        {
+          name: "选择器",
+          url: "/selector"
         }
       ],
       colorMap: ["#409EFF", "#67C23A", "#E6A23C", "#F56C6C", "#909399"],
